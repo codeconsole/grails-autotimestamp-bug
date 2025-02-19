@@ -14,4 +14,13 @@ class SampleController {
         redirect action: 'index'
     }
 
+    def failedBinding() {
+        def sample = new Sample()
+        sample.with {
+            name = params.name
+        }
+        log.info "sample.name '${sample.name}' should not be null."
+        respond sample
+    }
+
 }
